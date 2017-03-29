@@ -1,0 +1,70 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: HR - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x412 /fo"Debug/HR.res" /d "_DEBUG" /d "_AFXDLL" "C:\hr\hr백업-아미작업\Hr-2003-07-03-00-P4업-얼굴인식추가\HR.rc"" 
+Creating temporary file "C:\DOCUME~1\yhseo\LOCALS~1\Temp\RSP4B.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Debug/HR.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\hr\hr백업-아미작업\Hr-2003-07-03-00-P4업-얼굴인식추가\Comm.cpp"
+"C:\hr\hr백업-아미작업\Hr-2003-07-03-00-P4업-얼굴인식추가\Grab.cpp"
+"C:\hr\hr백업-아미작업\Hr-2003-07-03-00-P4업-얼굴인식추가\HR.cpp"
+"C:\hr\hr백업-아미작업\Hr-2003-07-03-00-P4업-얼굴인식추가\HRDoc.cpp"
+"C:\hr\hr백업-아미작업\Hr-2003-07-03-00-P4업-얼굴인식추가\HRView.cpp"
+"C:\hr\hr백업-아미작업\Hr-2003-07-03-00-P4업-얼굴인식추가\MainFrm.cpp"
+"C:\hr\hr백업-아미작업\Hr-2003-07-03-00-P4업-얼굴인식추가\YesNoDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\yhseo\LOCALS~1\Temp\RSP4B.tmp" 
+Creating temporary file "C:\DOCUME~1\yhseo\LOCALS~1\Temp\RSP4C.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Debug/HR.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\hr\hr백업-아미작업\Hr-2003-07-03-00-P4업-얼굴인식추가\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\yhseo\LOCALS~1\Temp\RSP4C.tmp" 
+Creating temporary file "C:\DOCUME~1\yhseo\LOCALS~1\Temp\RSP4D.tmp" with contents
+[
+winmm.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/HR.pdb" /debug /machine:I386 /out:"Debug/HR.exe" /pdbtype:sept 
+".\Debug\Comm.obj"
+".\Debug\Grab.obj"
+".\Debug\HR.obj"
+".\Debug\HRDoc.obj"
+".\Debug\HRView.obj"
+".\Debug\MainFrm.obj"
+".\Debug\StdAfx.obj"
+".\Debug\YesNoDlg.obj"
+".\Debug\HR.res"
+".\Winmm.lib"
+]
+Creating command line "link.exe @C:\DOCUME~1\yhseo\LOCALS~1\Temp\RSP4D.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+Comm.cpp
+Grab.cpp
+HR.cpp
+HRDoc.cpp
+HRView.cpp
+C:\hr\hr백업-아미작업\Hr-2003-07-03-00-P4업-얼굴인식추가\HRView.cpp(2055) : warning C4005: 'ThreshDist' : macro redefinition
+        C:\hr\hr백업-아미작업\Hr-2003-07-03-00-P4업-얼굴인식추가\HRView.cpp(79) : see previous definition of 'ThreshDist'
+C:\hr\hr백업-아미작업\Hr-2003-07-03-00-P4업-얼굴인식추가\HRView.cpp(3070) : warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+C:\hr\hr백업-아미작업\Hr-2003-07-03-00-P4업-얼굴인식추가\HRView.cpp(3152) : warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+C:\hr\hr백업-아미작업\Hr-2003-07-03-00-P4업-얼굴인식추가\HRView.cpp(3995) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\hr\hr백업-아미작업\Hr-2003-07-03-00-P4업-얼굴인식추가\HRView.cpp(4563) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+MainFrm.cpp
+YesNoDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+HR.exe - 0 error(s), 5 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: EmotionPanel - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x412 /fo"Release/EmotionPanel.res" /d "NDEBUG" /d "_AFXDLL" "D:\WORK\EmotionPanelProjects\EmotionPanel20010423\EmotionPanel.rc"" 
+Creating temporary file "C:\DOCUME~1\daniel\LOCALS~1\Temp\RSPB1.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/EmotionPanel.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\WORK\EmotionPanelProjects\EmotionPanel20010423\EmotionPanel.cpp"
+"D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp"
+"D:\WORK\EmotionPanelProjects\EmotionPanel20010423\MainFrm.cpp"
+"D:\WORK\EmotionPanelProjects\EmotionPanel20010423\OpenGLWnd.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\daniel\LOCALS~1\Temp\RSPB1.tmp" 
+Creating temporary file "C:\DOCUME~1\daniel\LOCALS~1\Temp\RSPB2.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/EmotionPanel.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\WORK\EmotionPanelProjects\EmotionPanel20010423\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\daniel\LOCALS~1\Temp\RSPB2.tmp" 
+Creating temporary file "C:\DOCUME~1\daniel\LOCALS~1\Temp\RSPB3.tmp" with contents
+[
+opengl32.lib glu32.lib cimage/CIMAGE.lib cimage/JPEG.lib cimage/PNG.lib cimage/ZLIB.lib winmm.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/EmotionPanel.pdb" /machine:I386 /out:"Release/EmotionPanel.exe" 
+.\Release\EmotionPanel.obj
+.\Release\HUD.obj
+.\Release\MainFrm.obj
+.\Release\OpenGLWnd.obj
+.\Release\StdAfx.obj
+.\Release\EmotionPanel.res
+]
+Creating command line "link.exe @C:\DOCUME~1\daniel\LOCALS~1\Temp\RSPB3.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+EmotionPanel.cpp
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\EmotionPanel.cpp(76) : warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+HUD.cpp
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(52) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(102) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(106) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(110) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(133) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(133) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(134) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(134) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(135) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(135) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(136) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(136) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(137) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(137) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(138) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(138) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(139) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(139) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(140) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(140) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(141) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(141) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(142) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(142) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(143) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(143) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(144) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+D:\WORK\EmotionPanelProjects\EmotionPanel20010423\HUD.cpp(144) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+MainFrm.cpp
+OpenGLWnd.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+EmotionPanel.exe - 0 error(s), 29 warning(s)
+</pre>
+</body>
+</html>

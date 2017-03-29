@@ -1,0 +1,30 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: EmotionPanel - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\yhseo\LOCALS~1\Temp\RSP64.tmp" with contents
+[
+opengl32.lib glu32.lib cimage/CIMAGE.lib cimage/JPEG.lib cimage/PNG.lib cimage/ZLIB.lib winmm.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/EmotionPanel.pdb" /machine:I386 /out:"Release/EmotionPanel.exe" 
+".\Release\EmotionPanel.obj"
+".\Release\Heart.obj"
+".\Release\HUD.obj"
+".\Release\MainFrm.obj"
+".\Release\OpenGLWnd.obj"
+".\Release\StdAfx.obj"
+".\Release\EmotionPanel.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\yhseo\LOCALS~1\Temp\RSP64.tmp"
+<h3>Output Window</h3>
+Linking...
+
+
+
+<h3>Results</h3>
+EmotionPanel.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

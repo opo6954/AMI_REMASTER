@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: dtw - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\aim\LOCALS~1\Temp\RSP16.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR"Debug/" /Fp"Debug/dtw.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\AMI\SPEECH\dtw.cpp"
+"C:\AMI\SPEECH\dtwDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\aim\LOCALS~1\Temp\RSP16.tmp" 
+Creating command line "link.exe winmm.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/dtw.pdb" /debug /machine:I386 /out:"Debug/dtw.exe" /pdbtype:sept  .\Debug\dtw.obj .\Debug\dtwDlg.obj .\Debug\mydtwrtn.obj .\Debug\spinput.obj .\Debug\StdAfx.obj .\Debug\dtw.res "
+<h3>Output Window</h3>
+Compiling...
+dtw.cpp
+dtwDlg.cpp
+C:\AMI\SPEECH\dtwDlg.cpp(451) : warning C4244: '=' : conversion from 'double' to 'short', possible loss of data
+C:\AMI\SPEECH\dtwDlg.cpp(540) : warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+C:\AMI\SPEECH\dtwDlg.cpp(568) : warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+Generating Code...
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/dtw.bsc"  .\Debug\StdAfx.sbr .\Debug\dtw.sbr .\Debug\dtwDlg.sbr .\Debug\mydtwrtn.sbr .\Debug\spinput.sbr"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+dtw.exe - 0 error(s), 3 warning(s)
+</pre>
+</body>
+</html>

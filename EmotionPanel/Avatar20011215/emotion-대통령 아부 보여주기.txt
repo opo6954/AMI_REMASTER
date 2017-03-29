@@ -1,0 +1,5 @@
+// yhseo
+보여줄 곳에 다음을 hrvip에 추가한다.
+
+	::SendMessage(HWND_BROADCAST,MsgEmotion,10000,1); //대통령 얼굴로 변환
+	::SendMessage(HWND_BROADCAST,MsgEmotion,9970,9000);
