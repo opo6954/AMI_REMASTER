@@ -288,7 +288,7 @@ double CDtwDlg::feat(int fr)
 	average = average / FR_SIZE;
 
 	eng = 0.0;
-	for(i=0; i<FR_SIZE; i++)
+	for(int i=0; i<FR_SIZE; i++)
 	{
 		eng += fabs(m_Data[offset + i] - average) * fabs(m_Data[offset + i] - average);
 	}
@@ -537,7 +537,7 @@ int CDtwDlg::feat_extr1(int length)
 	int i, j, fr_num, number;
 	double lpcof[ORDER], cep[ORDER];
 
-	fr_num = ceil(length / OVERLAP) - 1;
+	fr_num = ceil((float)length / OVERLAP) - 1;
 	//if(fr_num >= 100) fr_num = 99;
 
 	word[m_nWord].prCep =(double *)malloc(fr_num * ORDER * sizeof(double));
@@ -565,7 +565,7 @@ int CDtwDlg::feat_extr2(int length)
 	int i, j, fr_num, number;
 	double lpcof[ORDER], cep[ORDER];
 
-	fr_num = ceil(length / OVERLAP) - 1;
+	fr_num = ceil((float)length / OVERLAP) - 1;
 	//if(fr_num >= 100) fr_num = 99;
 
 	word[m_nWord].prCep2 =(double *)malloc(fr_num * ORDER * sizeof(double));
@@ -802,7 +802,7 @@ void CDtwDlg::OnButtonDel()
 			word[i].prCep2 =(double *)malloc(sizeof(double)*word[i+1].framenum2*ORDER);
 			for(int j=0;j<word[i+1].framenum*ORDER;j++)
 				word[i].prCep[j]=word[i+1].prCep[j];
-			for(j=0;j<word[i+1].framenum2*ORDER;j++)
+			for(int j=0;j<word[i+1].framenum2*ORDER;j++)
 				word[i].prCep2[j]=word[i+1].prCep2[j];
 		}
 		free(word[m_nWord].prCep);
