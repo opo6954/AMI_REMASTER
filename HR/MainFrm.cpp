@@ -124,7 +124,6 @@ LRESULT CMainFrame::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 		{
 			CHRView *view;
 			view = (CHRView *)GetActiveView();
-			view->ReturnRead((int)lParam);
 		}
 	}
 	

@@ -184,13 +184,7 @@ BYTE	ultra_enable=0;
 
 #define	ARM_DATA_SIZE	(24+5)
 
-// 이동할 팔의 위치를 저장하는 변수 
-LONG	RightArm[6]={0,0,0,0,0,0};
-LONG	LeftArm[6]={0,0,0,0,0,0};
 
-// 현재의 팔의 위치를 저장하는 변수 
-LONG	R_RightArm[6]={0,0,0,0,0,0};
-LONG	R_LeftArm[6]={0,0,0,0,0,0};
 
 #define F_PI                ((double)3.141592)
 #define F_PI2               ((double)1.570796)

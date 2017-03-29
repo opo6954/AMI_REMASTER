@@ -1450,7 +1450,7 @@ void CHUD::DrawHeart()
 	static float hs[50] = {1.0f};
 	static int co = 0;
 
-	for(register i=1;i<50;i++)
+	for(int i=1;i<50;i++)
 		hs[i] = hs[i-1];
 
 	hs[0] = HeartSize;

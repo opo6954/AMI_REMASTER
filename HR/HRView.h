@@ -40,17 +40,7 @@ public:
 
 	CHRDoc* GetDocument();
 	CYesNoDlg yesNoDlg;
-	
-	CComm*	m_pComm;
-
-	/* for mobile */
-	CComm   m_comm1;
-	/* for head */
-	CComm   m_comm2;	
-	/* for right arm */
-	CComm   m_comm3;	
-	/* for left arm */
-	CComm   m_comm4;	
+		
 
 	char	m_abIn[MAX_BUFFER+1];
 	char	m_abIn2[MAX_BUFFER+1];
