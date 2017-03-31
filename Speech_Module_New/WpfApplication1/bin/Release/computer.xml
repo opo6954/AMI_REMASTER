@@ -1,0 +1,19 @@
+<grammar version="1.0" sapi:alphabet="x-microsoft-ups" xml:lang="ko-KR" root="Command" 
+         tag-format="semantics-ms/1.0" xmlns="http://www.w3.org/2001/06/grammar"
+         xmlns:sapi="http://schemas.microsoft.com/Speech/2002/06/SRGSExtensions">
+     <rule id="Command" scope="public">
+          <one-of>
+              <item>응</item>
+              <item>아니</item>
+              <item>야</item>
+              <item>잘되네</item>
+              <item>하하하</item>
+              <item>안녕</item>
+              <item>아미</item>
+              <item>못했어</item>
+              <item>잘했어</item>
+              <item>멋진모습</item>
+              <item>기분이어때</item>
+          </one-of>
+     </rule>
+</grammar>
