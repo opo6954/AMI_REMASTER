@@ -11,6 +11,9 @@
 #define new DEBUG_NEW
 #endif
 
+#define SPEECHMODULLENAME "SpeechModule"
+#define EMOTIONMODULENAME "Avatar"
+
 
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 
@@ -62,6 +65,7 @@ BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_BUTTON1, &CMFCApplication1Dlg::OnBnClickedButton1)
 END_MESSAGE_MAP()
 
 
@@ -70,6 +74,8 @@ END_MESSAGE_MAP()
 BOOL CMFCApplication1Dlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
+
+	srand( (unsigned)time( NULL ) );
 
 	// 시스템 메뉴에 "정보..." 메뉴 항목을 추가합니다.
 
@@ -98,7 +104,9 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
 
-	message = RegisterWindowMessage(_T("User Message"));
+	SR2Center = RegisterWindowMessage(_T("WM_SR2Center"));
+	Center2SR = RegisterWindowMessage(_T("WM_Center2SR"));
+	Center2Emotion = RegisterWindowMessage(_T("Wm_Center2Emotion"));
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -157,14 +165,38 @@ HCURSOR CMFCApplication1Dlg::OnQueryDragIcon()
 LRESULT CMFCApplication1Dlg::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 {
     // 메시지 수신
-    if(message == this->message && (HWND)wParam !=this->GetSafeHwnd())
-    {
-        char buf[256];
+	
+	if(message == this->SR2Center && (HWND)wParam != this->GetSafeHwnd())
+	{
+		char buf[256];
  
         sprintf_s(buf, "WPF Message : %d", lParam);
 		MessageBox(NULL,  (CA2W) buf);
+	}
 
-    }
- 
     return CDialog::WindowProc(message, wParam, lParam);
+}
+
+void CMFCApplication1Dlg::OnBnClickedButton1()
+{
+	SetDlgItemText(IDC_STATIC1,_T("example_emotion_output"));
+
+	CWnd *lp_tip_wnd = CWnd::FindWindow(NULL, _T(EMOTIONMODULENAME));
+        if(lp_tip_wnd == NULL)
+		{
+			SetDlgItemText(IDC_STATIC1,_T("\nNo window found"));
+			
+		}
+		else
+		{
+			SetDlgItemText(IDC_STATIC1,_T("\nWindow found"));
+			int random = rand() % 2;
+			lp_tip_wnd->SendMessage(Center2Emotion,(WPARAM)this->m_hWnd,random);
+		}
+	
+	
+
+
+	
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }

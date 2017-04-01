@@ -89,7 +89,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	DockControlBar(&m_wndToolBar);
 */
 //	MsgNewFace = RegisterWindowMessage("MSG_DR_NEWFACE");
-	MsgEmotion = RegisterWindowMessage("MSG_AIMM_EMOTION");
+	MsgEmotion = RegisterWindowMessage("Wm_Center2Emotion");
 	
 	return 0;
 }
@@ -127,24 +127,25 @@ void CMainFrame::Dump(CDumpContext& dc) const
 
 LRESULT CMainFrame::WindowProc(UINT message, WPARAM wParam, LPARAM lParam) 
 {
+	
 	if(message==MsgEmotion)
 	{
-
-		if(wParam==10000)
+		
+		switch(lParam)
 		{
-			if(lParam)
-				m_wndViewPort.hud->photoa[0][1] = 1.0f;
-			else
-				m_wndViewPort.hud->photoa[0][1] = 0.0f;
-		}
-		else
-		{
-			m_wndViewPort.hud->sorrow_joy_tobe = (float)(wParam%100)/100.0f;
-			m_wndViewPort.hud->anger_tobe = (float)(wParam/100)/100.0f;
-			m_wndViewPort.hud->duration = lParam;
+		case 0://±â»Û Ç¥Á¤
+			m_wndViewPort.hud->anger = 1.0f;
+			m_wndViewPort.hud->sorrow_joy = 0.0f;
+			break;
+		case 1://½½ÇÂ Ç¥Á¤
+			m_wndViewPort.hud->sorrow_joy = 1.0f;
+			m_wndViewPort.hud->anger = 0.0f;
+			break;
+		default:
+			break;
 		}
 
-		return 0;
+		
 	}
 	return CFrameWnd::WindowProc(message, wParam, lParam);
 }

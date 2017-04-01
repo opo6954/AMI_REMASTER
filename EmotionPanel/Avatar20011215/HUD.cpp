@@ -197,16 +197,6 @@ CHUD::CHUD()
 	PhotoIndex = 0;
 	heartflag = 0;
 
-	mapimage = 0;
-	circleimage = 0;
-/*
-	numberimage = 0;
-	kmphimage = 0;
-	graphimage = 0;
-	titleimage = 0;
-	winimage = 0;
-	lostimage = 0;
-*/
 	state = 1;
 
 	sorrow_joy = 0.5f;
@@ -241,59 +231,8 @@ CHUD::CHUD()
 
 CHUD::~CHUD()
 {
-	if(mapimage)
-	{
-		delete mapimage;
-		mapimage = 0;
-		glDeleteTextures(1,&(texnames[0]));
-	}
-	if(circleimage)
-	{
-		delete circleimage;
-		circleimage = 0;
-		glDeleteTextures(1,&(texnames[1]));
-	}
-
-	delete heart;
-/*
-	if(numberimage)
-	{
-		delete numberimage;
-		numberimage = 0;
-		glDeleteTextures(1,&(texnames[1]));
-	}
-	if(kmphimage)
-	{
-		delete kmphimage;
-		kmphimage = 0;
-		glDeleteTextures(1,&(texnames[2]));
-	}
-	if(graphimage)
-	{
-		delete graphimage;
-		graphimage = 0;
-		glDeleteTextures(1,&(texnames[3]));
-	}
-	if(titleimage)
-	{
-		delete titleimage;
-		titleimage = 0;
-		glDeleteTextures(1,&(texnames[4]));
-	}
-	if(winimage)
-	{
-		delete winimage;
-		winimage = 0;
-		glDeleteTextures(1,&(texnames[5]));
-	}
-	if(lostimage)
-	{
-		delete lostimage;
-		lostimage = 0;
-		glDeleteTextures(1,&(texnames[6]));
-	}
-*/
 }
+
 
 void CHUD::init()
 {
@@ -304,248 +243,9 @@ void CHUD::init()
 	heart = new CHeart;
 	heart->Init();
 
-	mapimage = new CImage("maps/map3small.png");
-	circleimage = new CImage("maps/circle.png");
-//	numberimage = new CImage("maps/numbers.png");
-//	kmphimage = new CImage("maps/kmPH2.png");
-//	graphimage = new CImage("maps/graph.png");
-
-//	titleimage = new CImage("maps/TDF.png");
-//	winimage = new CImage("maps/win.png");
-//	lostimage = new CImage("maps/lost.png");
-
-/////////////////////////// map image
-	temp2 = mapimage->GetRawImage();
-	temp3 = (unsigned char*)malloc(sizeof(unsigned char)*(GLint)mapimage->GetWidth()*(GLint)mapimage->GetHeight()*4);
-
-	for(i=0;i<(GLint)mapimage->GetWidth()*(GLint)mapimage->GetHeight();i++)
-	{
-		temp3[i*4] = temp2[i*3];
-		temp3[i*4+1] = temp2[i*3+1];
-		temp3[i*4+2] = temp2[i*3+2];
-		temp3[i*4+3] = temp2[i*3]*100/255+50;
-	}
-//	glGenTextures(1, &(texnames[0]));
-	texnames[0] = 6;
-
-	glBindTexture(GL_TEXTURE_2D, texnames[0]);
-	glTexImage2D(GL_TEXTURE_2D, 0, 4, (GLint)mapimage->GetWidth(), (GLint)mapimage->GetHeight(),0, GL_RGBA, GL_UNSIGNED_BYTE, (void*)temp3);
-
-	free(temp3);
 
 	
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	
-/////////////////////////// circle image
-	temp2 = circleimage->GetRawImage();
-	temp3 = (unsigned char*)malloc(sizeof(unsigned char)*(GLint)circleimage->GetWidth()*(GLint)circleimage->GetHeight()*4);
-
-	for(i=0;i<(GLint)circleimage->GetWidth()*(GLint)circleimage->GetHeight();i++)
-	{
-		temp3[i*4] = 255;
-		temp3[i*4+1] = 255;
-		temp3[i*4+2] = 255;
-		temp3[i*4+3] = temp2[i*3];
-		if (temp3[i*4+3]<35)
-			temp3[i*4+3] = 0;
-	}
-//	glGenTextures(1, &(texnames[1]));
-	texnames[1] = 7;
-
-	glBindTexture(GL_TEXTURE_2D, texnames[1]);
-	glTexImage2D(GL_TEXTURE_2D, 0, 4, (GLint)circleimage->GetWidth(), (GLint)circleimage->GetHeight(),0, GL_RGBA, GL_UNSIGNED_BYTE, (void*)temp3);
-
-	free(temp3);
-
-	
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-		unsigned char *img;
-		img = (unsigned char*)malloc(sizeof(unsigned char)*512*512*3);
-		FILE *fp;
-///////////////////////////////////////////////////////// 16
-	{
-		fp = fopen("maps/16a.raw","rb");
-		fread(img,512*512*3,1,fp);
-		photonames[0] = 8;
-
-		glBindTexture(GL_TEXTURE_2D, photonames[0]);
-		glTexImage2D(GL_TEXTURE_2D, 0, 3, 512, 512,0, GL_RGB, GL_UNSIGNED_BYTE, (void*)img);
-
-		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		fclose(fp);
-	}
-///////////////////////////////////////////////////////// 14
-	{
-		fp = fopen("maps/14a.raw","rb");
-		fread(img,512*512*3,1,fp);
-		photonames[1] = 9;
-
-		glBindTexture(GL_TEXTURE_2D, photonames[1]);
-		glTexImage2D(GL_TEXTURE_2D, 0, 3, 512, 512,0, GL_RGB, GL_UNSIGNED_BYTE, (void*)img);
-
-		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		fclose(fp);
-	}
-
-///////////////////////////////////////////////////////// 15
-	{
-		fp = fopen("maps/15a.raw","rb");
-		fread(img,512*512*3,1,fp);
-		photonames[2] = 10;
-
-		glBindTexture(GL_TEXTURE_2D, photonames[2]);
-		glTexImage2D(GL_TEXTURE_2D, 0, 3, 512, 512,0, GL_RGB, GL_UNSIGNED_BYTE, (void*)img);
-
-		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		fclose(fp);
-	}
-///////////////////////////////////////////////////////// น฿ทน.
-	{	
-		photonames[3] = 21;
-		photonames[4] = 22;
-		photonames[5] = 23;
-		photonames[6] = 24;
-		photonames[7] = 25;
-		photonames[8] = 26;
-		photonames[9] = 27;
-		photonames[10] = 28;
-		{
-			CImage *tmpimg;
-			tmpimg = new CImage("maps/01.bmp");
-			temp2 = tmpimg->GetRawImage();
-			glBindTexture(GL_TEXTURE_2D, photonames[3]);
-			gluBuild2DMipmaps(GL_TEXTURE_2D, 3, tmpimg->GetWidth(), tmpimg->GetHeight(), GL_BGR_EXT, GL_UNSIGNED_BYTE, (void*)temp2);
-			glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-			delete tmpimg;
-		}
-		{
-			CImage *tmpimg;
-			tmpimg = new CImage("maps/02.bmp");
-			temp2 = tmpimg->GetRawImage();
-			glBindTexture(GL_TEXTURE_2D, photonames[4]);
-			gluBuild2DMipmaps(GL_TEXTURE_2D, 3, tmpimg->GetWidth(), tmpimg->GetHeight(), GL_BGR_EXT, GL_UNSIGNED_BYTE, (void*)temp2);
-			glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-			delete tmpimg;
-		}
-		{
-			CImage *tmpimg;
-			tmpimg = new CImage("maps/03.bmp");
-			temp2 = tmpimg->GetRawImage();
-			glBindTexture(GL_TEXTURE_2D, photonames[5]);
-			gluBuild2DMipmaps(GL_TEXTURE_2D, 3, tmpimg->GetWidth(), tmpimg->GetHeight(), GL_BGR_EXT, GL_UNSIGNED_BYTE, (void*)temp2);
-			glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-			delete tmpimg;
-		}
-		{
-			CImage *tmpimg;
-			tmpimg = new CImage("maps/04.bmp");
-			temp2 = tmpimg->GetRawImage();
-			glBindTexture(GL_TEXTURE_2D, photonames[6]);
-			gluBuild2DMipmaps(GL_TEXTURE_2D, 3, tmpimg->GetWidth(), tmpimg->GetHeight(), GL_BGR_EXT, GL_UNSIGNED_BYTE, (void*)temp2);
-			glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-			delete tmpimg;
-		}
-		{
-			CImage *tmpimg;
-			tmpimg = new CImage("maps/05.bmp");
-			temp2 = tmpimg->GetRawImage();
-			glBindTexture(GL_TEXTURE_2D, photonames[7]);
-			gluBuild2DMipmaps(GL_TEXTURE_2D, 3, tmpimg->GetWidth(), tmpimg->GetHeight(), GL_BGR_EXT, GL_UNSIGNED_BYTE, (void*)temp2);
-			glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-			delete tmpimg;
-		}
-		{
-			CImage *tmpimg;
-			tmpimg = new CImage("maps/06.bmp");
-			temp2 = tmpimg->GetRawImage();
-			glBindTexture(GL_TEXTURE_2D, photonames[8]);
-			gluBuild2DMipmaps(GL_TEXTURE_2D, 3, tmpimg->GetWidth(), tmpimg->GetHeight(), GL_BGR_EXT, GL_UNSIGNED_BYTE, (void*)temp2);
-			glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-			delete tmpimg;
-		}
-		{
-			CImage *tmpimg;
-			tmpimg = new CImage("maps/07.bmp");
-			temp2 = tmpimg->GetRawImage();
-			glBindTexture(GL_TEXTURE_2D, photonames[9]);
-			gluBuild2DMipmaps(GL_TEXTURE_2D, 3, tmpimg->GetWidth(), tmpimg->GetHeight(), GL_BGR_EXT, GL_UNSIGNED_BYTE, (void*)temp2);
-			glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-			delete tmpimg;
-		}
-
-		{
-			CImage *tmpimg;
-			tmpimg = new CImage("maps/08.bmp");
-			temp2 = tmpimg->GetRawImage();
-			glBindTexture(GL_TEXTURE_2D, photonames[10]);
-			gluBuild2DMipmaps(GL_TEXTURE_2D, 3, tmpimg->GetWidth(), tmpimg->GetHeight(), GL_BGR_EXT, GL_UNSIGNED_BYTE, (void*)temp2);
-			glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-			delete tmpimg;
-		}
-
-		Beep(6000,100);
-
-	}
-	free(img);
-	free(temp2);
 }
 
 void CHUD::DrawMap()
@@ -1047,31 +747,8 @@ void CHUD::PhotoNext()
 	if(PhotoIndex==2)
 		PhotoIndex = 3;
 
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D,photonames[3]);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
-	unsigned char* temp2;
 
-	CImage *tmpimg;
-	char nname[128];
-	sprintf(nname,"maps/%da.bmp",PhotoIndex+1);
-	tmpimg = new CImage(nname);
-	temp2 = tmpimg->GetRawImage();
-
-	photonames[3] = 11;
-
-	glBindTexture(GL_TEXTURE_2D, photonames[3]);
-	gluBuild2DMipmaps(GL_TEXTURE_2D, 3, tmpimg->GetWidth(), tmpimg->GetHeight(), GL_BGR_EXT, GL_UNSIGNED_BYTE, (void*)temp2);
-
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-	delete tmpimg;
 }
 
 void CHUD::PhotoPrev()
@@ -1083,31 +760,6 @@ void CHUD::PhotoPrev()
 	if(PhotoIndex==2)
 		PhotoIndex = 1;
 
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D,photonames[3]);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-
-	unsigned char* temp2;
-
-	CImage *tmpimg;
-	char nname[128];
-	sprintf(nname,"maps/%da.bmp",PhotoIndex+1);
-	tmpimg = new CImage(nname);
-	temp2 = tmpimg->GetRawImage();
-
-	photonames[3] = 11;
-
-	glBindTexture(GL_TEXTURE_2D, photonames[3]);
-	gluBuild2DMipmaps(GL_TEXTURE_2D, 3, tmpimg->GetWidth(), tmpimg->GetHeight(), GL_BGR_EXT, GL_UNSIGNED_BYTE, (void*)temp2);
-
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-	delete tmpimg;
 }
 
 

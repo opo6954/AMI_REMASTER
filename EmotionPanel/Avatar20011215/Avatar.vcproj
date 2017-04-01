@@ -168,7 +168,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="opengl32.lib glu32.lib cimage/cimage.lib cimage/zlib.lib cimage/png.lib cimage/jpeg.lib winmm.lib"
+				AdditionalDependencies="opengl32.lib glu32.lib winmm.lib"
 				OutputFile=".\Debug/Avatar.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"

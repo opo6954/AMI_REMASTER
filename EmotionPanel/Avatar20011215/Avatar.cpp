@@ -281,11 +281,13 @@ void CAvatarApp::Process()
 
 	if(GetAsyncKeyState(VK_UP))
 	{
-		m_wndViewPort.hud->IncA();
+		m_wndViewPort.hud->anger = 1.0f;
+		m_wndViewPort.hud->sorrow_joy = 0.0f;
 	}
 	if(GetAsyncKeyState(VK_DOWN))
 	{
-		m_wndViewPort.hud->DecA();
+		m_wndViewPort.hud->sorrow_joy = 1.0f;
+		m_wndViewPort.hud->anger = 0.0f;
 	}
 	if(GetAsyncKeyState(VK_LEFT))
 	{
@@ -344,61 +346,6 @@ void CAvatarApp::Process()
 		m_wndViewPort.hud->PhotoPrev();
 	}
 	
-/*
-	if(m_wndViewPort)
-	{
-		if(GetAsyncKeyState(VK_Q))
-		{
-			m_wndViewPort.hud->theta+=0.2f;
-		}
-		if(GetAsyncKeyState(VK_A))
-		{
-			m_wndViewPort.hud->theta-=0.2f;
-		}
-		if(GetAsyncKeyState(VK_W))
-		{
-			m_wndViewPort.hud->scalex+=0.2f;
-		}
-		if(GetAsyncKeyState(VK_S))
-		{
-			m_wndViewPort.hud->scalex-=0.2f;
-		}
-		if(GetAsyncKeyState(VK_E))
-		{
-			m_wndViewPort.hud->scaley+=0.2f;
-		}
-		if(GetAsyncKeyState(VK_D))
-		{
-			m_wndViewPort.hud->scaley-=0.2f;
-		}
-		if(GetAsyncKeyState(VK_H))
-		{
-			m_wndViewPort.hud->transx+=0.02f;
-		}
-		if(GetAsyncKeyState(VK_F))
-		{
-			m_wndViewPort.hud->transx-=0.02f;
-		}
-		if(GetAsyncKeyState(VK_T))
-		{
-			m_wndViewPort.hud->transy+=0.02f;
-		}
-		if(GetAsyncKeyState(VK_G))
-		{
-			m_wndViewPort.hud->transy-=0.02f;
-		}
-		if(GetAsyncKeyState(VK_Z))
-		{
-			m_wndViewPort.hud->map_alpha-=0.04f;
-		}
-		if(GetAsyncKeyState(VK_X))
-		{
-			m_wndViewPort.hud->map_alpha+=0.04f;
-		}
-
-	}
-*/	
-
 	if(GetAsyncKeyState(VK_RETURN))
 	{
 		m_wndViewPort.hud->state = !m_wndViewPort.hud->state;

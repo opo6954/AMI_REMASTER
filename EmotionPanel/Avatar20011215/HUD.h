@@ -13,7 +13,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include "Cimage/cimage.h"
+
 #include "heart.h"
 
 class CHUD  
@@ -126,15 +126,7 @@ public:
 
 
 protected:
-	CImage *mapimage;
-	CImage *circleimage;
-//	CImage *numberimage;
-//	CImage *kmphimage;
-//	CImage *graphimage;
 
-//	CImage *titleimage;
-//	CImage *winimage;
-//	CImage *lostimage;
 
 	unsigned int texnames[2];
 	unsigned int photonames[4];

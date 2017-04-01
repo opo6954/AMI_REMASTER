@@ -22,7 +22,14 @@ public:
 // 구현입니다.
 protected:
 	HICON m_hIcon;
-	UINT message;
+
+
+	UINT SR2Center;//음성 인식에서 center로의 메시지
+
+	UINT Center2SR;//center에서 음성 합성으로의 메시지(출력)
+
+	UINT Center2Emotion;//음성 인식에서 감정으로의 메시지(출력)
+	
 	// 생성된 메시지 맵 함수
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
@@ -30,4 +37,6 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnBnClickedButton1();
 };

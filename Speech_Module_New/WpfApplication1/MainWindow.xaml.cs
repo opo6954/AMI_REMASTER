@@ -45,6 +45,7 @@ namespace WpfApplication1
         public MainWindow()
         {
             InitializeComponent();
+            this.Title = "SpeechModule";
 
         }
 
