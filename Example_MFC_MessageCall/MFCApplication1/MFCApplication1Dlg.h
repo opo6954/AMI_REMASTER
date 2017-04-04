@@ -22,7 +22,7 @@ public:
 // 구현입니다.
 protected:
 	HICON m_hIcon;
-
+	
 
 	UINT SR2Center;//음성 인식에서 center로의 메시지
 

@@ -13,9 +13,13 @@
 
 #define SPEECHMODULLENAME "SpeechModule"
 #define EMOTIONMODULENAME "Avatar"
-
+#define MSG_SR2CENTER "WM_SR2CENTER"
+#define MSG_CENTER2SR "WM_CENTER2SR"
+#define MSG_CENTER2EMOTION "WM_CENTER2EMOTION"
 
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
+
+
 
 class CAboutDlg : public CDialogEx
 {
@@ -27,6 +31,8 @@ public:
 
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
+
+	
 
 // 구현입니다.
 protected:
@@ -104,9 +110,9 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
 
-	SR2Center = RegisterWindowMessage(_T("WM_SR2Center"));
-	Center2SR = RegisterWindowMessage(_T("WM_Center2SR"));
-	Center2Emotion = RegisterWindowMessage(_T("Wm_Center2Emotion"));
+	SR2Center = RegisterWindowMessage( _T(MSG_SR2CENTER));
+	Center2SR = RegisterWindowMessage(_T(MSG_CENTER2SR));
+	Center2Emotion = RegisterWindowMessage(_T(MSG_CENTER2EMOTION));
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -166,13 +172,107 @@ LRESULT CMFCApplication1Dlg::WindowProc(UINT message, WPARAM wParam, LPARAM lPar
 {
     // 메시지 수신
 	
+	//일단 하드코딩으로 보여주기식으로 하자
 	if(message == this->SR2Center && (HWND)wParam != this->GetSafeHwnd())
 	{
+		int msg_answer=100;//음성 답변
+		int msg_emotion=100;//표정 답변
+
+		char ques_txt[256];
+		char ans_txt[256];
+
+		int random = rand() % 2;
+
 		char buf[256];
- 
-        sprintf_s(buf, "WPF Message : %d", lParam);
-		MessageBox(NULL,  (CA2W) buf);
+
+		int flag = lParam;
+
+		switch (flag)
+		{
+		case 0://아미
+			//네
+			msg_answer = 5;
+			sprintf_s(ques_txt,"아미");
+			sprintf_s(ans_txt,"네");
+			break;
+		case 1://기분이어때
+			
+			if(random == 0)//좋아요
+			{
+				msg_answer = 6;
+				msg_emotion = 0;
+				sprintf_s(ques_txt,"기분이어때");
+				sprintf_s(ans_txt,"좋아요");
+			}
+			else//나빠요
+			{
+				msg_answer = 7;
+				msg_emotion = 1;
+				sprintf_s(ques_txt,"기분이어때");
+				sprintf_s(ans_txt,"나빠요");
+			}
+			break;
+		case 2://잘했어
+			msg_answer = 8;
+			msg_emotion = 0;
+			sprintf_s(ques_txt,"잘했어");
+			sprintf_s(ans_txt,"감사합니다");
+			break;
+		case 3://못했어
+			msg_answer = 9;
+			msg_emotion = 1;
+			sprintf_s(ques_txt,"못했어");
+			sprintf_s(ans_txt,"열심히할게요");
+			break;
+		case 4://안녕
+			msg_answer = 4;
+			sprintf_s(ques_txt,"안녕");
+			sprintf_s(ans_txt,"안녕");
+			break;
+		default://없는 단어임 --> lParam 값이 100으로 고정
+			break;
+		}
+
+		SetDlgItemText(IDC_STATIC1, (CA2W)ans_txt);
+
+		if(msg_answer < 100)
+		{
+			
+
+			CWnd *lp_tip_wnd = CWnd::FindWindow(NULL, _T(SPEECHMODULLENAME));
+			//CWnd *lp_tip_wnd = CWnd::FindWindow(NULL, _T("power"));
+
+			if(lp_tip_wnd == NULL)
+			{
+				AfxMessageBox(_T("No SpeechModulewindow found"));			
+			}
+			else
+			{
+				lp_tip_wnd->PostMessageW(Center2SR,(WPARAM)this->m_hWnd,msg_answer);
+			}
+
+
+			//음성 보내기
+		}
+		if(msg_emotion < 100)
+		{
+			CWnd *lp_tip_wnd = CWnd::FindWindow(NULL, _T(EMOTIONMODULENAME));
+			//CWnd *lp_tip_wnd = CWnd::FindWindow(NULL, _T("power"));
+
+			if(lp_tip_wnd == NULL)
+			{
+				AfxMessageBox(_T("No EmotionPanel window found"));			
+			}
+			else
+			{
+				lp_tip_wnd->SendMessage(Center2Emotion,(WPARAM)this->m_hWnd,msg_emotion);
+			}
+			//표정 보내기
+		}
+
 	}
+
+
 
     return CDialog::WindowProc(message, wParam, lParam);
 }
@@ -193,9 +293,6 @@ void CMFCApplication1Dlg::OnBnClickedButton1()
 			int random = rand() % 2;
 			lp_tip_wnd->SendMessage(Center2Emotion,(WPARAM)this->m_hWnd,random);
 		}
-	
-	
-
 
 	
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.

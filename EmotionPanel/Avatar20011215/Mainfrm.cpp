@@ -14,6 +14,12 @@ extern CExpSliders ExpSliders;
 extern CKeyFramerDlg KeyFramerDlg;
 extern COpenGLView m_wndViewPort;
 
+#define SPEECHMODULLENAME "SpeechModule"
+#define EMOTIONMODULENAME "Avatar"
+#define MSG_SR2CENTER "WM_SR2CENTER"
+#define MSG_CENTER2SR "WM_CENTER2SR"
+#define MSG_CENTER2EMOTION "WM_CENTER2EMOTION"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
@@ -89,7 +95,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	DockControlBar(&m_wndToolBar);
 */
 //	MsgNewFace = RegisterWindowMessage("MSG_DR_NEWFACE");
-	MsgEmotion = RegisterWindowMessage("Wm_Center2Emotion");
+	MsgEmotion = RegisterWindowMessage(_T(MSG_CENTER2EMOTION));
 	
 	return 0;
 }
@@ -134,12 +140,12 @@ LRESULT CMainFrame::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 		switch(lParam)
 		{
 		case 0://±â»Û Ç¥Á¤
-			m_wndViewPort.hud->anger = 1.0f;
-			m_wndViewPort.hud->sorrow_joy = 0.0f;
+			m_wndViewPort.hud->sorrow_joy = 1.0f;
+			m_wndViewPort.hud->anger = 0.0f;			
 			break;
 		case 1://½½ÇÂ Ç¥Á¤
-			m_wndViewPort.hud->sorrow_joy = 1.0f;
-			m_wndViewPort.hud->anger = 0.0f;
+			m_wndViewPort.hud->anger = 1.0f;
+			m_wndViewPort.hud->sorrow_joy = 0.0f;			
 			break;
 		default:
 			break;
