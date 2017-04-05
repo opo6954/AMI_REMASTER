@@ -1,0 +1,16 @@
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\bin\Debug\FaceRecognition_UI.exe.config
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\bin\Debug\FaceRecognition_UI.exe
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\bin\Debug\FaceRecognition_UI.pdb
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\bin\Debug\OpenCvSharp.CPlusPlus.dll
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\bin\Debug\OpenCvSharp.dll
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\bin\Debug\OpenCvSharp.Extensions.dll
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\obj\Debug\MainWindow.baml
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\obj\Debug\MainWindow.g.cs
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\obj\Debug\App.g.cs
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\obj\Debug\FaceRecognition_UI_MarkupCompile.cache
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\obj\Debug\FaceRecognition_UI.g.resources
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\obj\Debug\FaceRecognition_UI.Properties.Resources.resources
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\obj\Debug\FaceRecognition_UI.csproj.GenerateResource.Cache
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\obj\Debug\FaceRecognition_UI.exe
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\obj\Debug\FaceRecognition_UI.pdb
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\bin\Debug\OpenCvSharp.UserInterface.dll
