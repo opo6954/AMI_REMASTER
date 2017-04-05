@@ -1,10 +1,14 @@
 ﻿<Window x:Class="FaceRecognition_UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="600" Width="600" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="MainWindow" Height="800" Width="1000" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid>  
         <TextBox Text="Face Module"></TextBox>
-        <Image x:Name="webCamImg" Height="400" Width="400"></Image>
-        <Button x:Name="webCamButton" Content="mybutton" Width="100" Margin="111,10,381,531" Click="myButtonEvent"/>
+        <Image x:Name="webCamImg" Height="480" Width="640" Margin="10,68,482,201"></Image>
+        <Button x:Name="webCamButton" Content="StartWebCam" Width="100" Height="30" Margin="33,27,859,712" Click="webCamButton_Click_1"/>
+        <Button x:Name="trainButton" Content="Train" Width="100" Height="30" Click="trainButton_Click_1" Margin="810,69,82,670"/>
+        <Button x:Name="testButton" Content="Test" Width="100" Height="30" Click="testButton_Click_1" Margin="810,120,82,619"/>
+        <TextBox x:Name="trainNameInput" Text=""
+        
     </Grid>
 </Window>

@@ -98,10 +98,15 @@ namespace FaceRecognition_UI
                 cap.Dispose();
             }
         }
+      
 
-        private void myButtonEvent(object sender, RoutedEventArgs e)
+        private void trainButton_Click_1(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void webCamButton_Click_1(object sender, RoutedEventArgs e)
+        {
             Mat frame = new Mat();
             Cv2.NamedWindow("1", WindowMode.AutoSize);
             loop = true;
@@ -121,6 +126,11 @@ namespace FaceRecognition_UI
                 if (c != -1)
                     break;
             }
+        }
+
+        private void testButton_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
