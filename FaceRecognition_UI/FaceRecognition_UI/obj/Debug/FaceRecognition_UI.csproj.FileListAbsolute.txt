@@ -15,3 +15,5 @@ D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\obj\De
 D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\obj\Debug\FaceRecognition_UI.pdb
 D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\bin\Debug\OpenCvSharp.UserInterface.dll
 D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\obj\Debug\FaceRecognition_UI.csprojResolveAssemblyReference.cache
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\obj\Debug\DebugWindow.baml
+D:\170405_AMI_REMASTER\AMI_REMASTER\FaceRecognition_UI\FaceRecognition_UI\obj\Debug\DebugWindow.g.cs

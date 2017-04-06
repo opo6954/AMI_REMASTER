@@ -45,3 +45,8 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+#Too much big file..., please eliminate...
+opencv_gpu249.dll
+opencv_gpu249d.dll
+fc6_w.dat

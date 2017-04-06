@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 
 using OpenCvSharp;
 using OpenCvSharp.CPlusPlus;
@@ -28,110 +29,90 @@ namespace FaceRecognition_UI
     /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
-        VideoCapture cap;
-        WriteableBitmap wb;
-        
-
+        /*
+         *********************상수 입력 필드*******************
+         * */
         const int frameWidth = 640;
         const int frameHeight = 480;
-        bool loop = false;
+        const int nOfFrame2Train = 5;
+        const int nOfFrame2Recog = 30;
+        const int maximumPersonCount = 5;
+
+        
+        FaceCenterModule centerModule;
+        public DebugWindow debugWindow;
 
         public MainWindow()
         {
             InitializeComponent();
         }
-
+        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            initWPFComponent();
+            centerModule = new FaceCenterModule(this);
 
-            Mat img = Cv2.ImRead("C:/test.jpg");
+            debugWindow = new DebugWindow();
+            debugWindow.Show();
 
-
-
-            WriteableBitmap tmp;
-            tmp = new WriteableBitmap(img.Width,img.Height, 96, 96, PixelFormats.Bgr24,null);
-            WriteableBitmapConverter.ToWriteableBitmap(img, tmp);
-            webCamImg.Source = tmp;
-            
             
 
-
-            /*
-            if (InitWebCamera())
+            if (centerModule.Initialize(frameWidth, frameHeight,nOfFrame2Train,nOfFrame2Recog,maximumPersonCount) == false)
             {
-                MessageBox.Show("웹캠켜짐.");
+                MessageBox.Show("Init Center Module Fail...");
             }
             else
             {
-                MessageBox.Show("웹캠에 문제가 있습니다.");
-            }
-            */
-            
-
-
-        }
-
-        private bool InitWebCamera()
-        {
-            try
-            {
-                cap = VideoCapture.FromCamera(CaptureDevice.Any, 0);
-                cap.FrameWidth = frameWidth;
-                cap.FrameHeight = frameHeight;
-                cap.Open(0);
-                wb = new WriteableBitmap(cap.FrameWidth, cap.FrameHeight, 96, 96, PixelFormats.Bgr24, null);
-                webCamImg.Source = wb;
-
-                return true;
-            }
-            catch
-            {
-                return false;
+                MessageBox.Show("Init Center Module Success...");
             }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            loop = false;
-            if (cap.IsOpened())
+            /*
+            showWebCam = false;
+            //camera thread 멈추기
+
+            if (cap != null)
             {
-                cap.Dispose();
-            }
-        }
-      
-
-        private void trainButton_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void webCamButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            Mat frame = new Mat();
-            Cv2.NamedWindow("1", WindowMode.AutoSize);
-            loop = true;
-            while (loop)
-            {
-
-                if (cap.Read(frame))
+                if (cap.IsOpened())
                 {
-                    Cv2.ImShow("1", frame);
-
-                    WriteableBitmapConverter.ToWriteableBitmap(frame, wb);
-                    webCamImg.Source = wb;
+                    cap.Dispose();
                 }
-
-                int c = Cv2.WaitKey(10);
-
-                if (c != -1)
-                    break;
             }
+             * */
+        }
+       
+        private void initWPFComponent()
+        {
+            
+            
+
         }
 
-        private void testButton_Click_1(object sender, RoutedEventArgs e)
+        private void StartWebButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            centerModule.webCamStart();
+            centerModule.printTxtOnDebug("Start Webcam...");
+        }
+
+        private void TestButton_Click_1(object sender, RoutedEventArgs e)
         {
 
         }
+
+        private void TrainButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            centerModule.trainStart(TrainFaceName.Text);
+        }
+
+
+        private void StopWebCam_Click_1(object sender, RoutedEventArgs e)
+        {
+            centerModule.webCamStop();
+            centerModule.printTxtOnDebug("Finish Webcam...");
+        }
+
     }
 
 }

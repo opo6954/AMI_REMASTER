@@ -1,0 +1,221 @@
+22
+layer {
+name: conv1_1
+type: conv
+w_path: conv1_1_w.dat
+b_path: conv1_1_b.dat
+w_shape: 3 3 3 64
+b_shape: 64 1 1 1
+in_shape: 224 224 3 1
+out_shape: 224 224 64 1
+}
+layer {
+name: conv1_2
+type: conv
+w_path: conv1_2_w.dat
+b_path: conv1_2_b.dat
+w_shape: 3 3 64 64
+b_shape: 64 1 1 1
+in_shape: 224 224 64 1
+out_shape: 224 224 64 1
+}
+layer {
+name: mpool1
+type: pool
+w_path:
+b_path:
+w_shape: 2 2 1 1
+b_shape: 2 2 1 1
+in_shape: 224 224 64 1
+out_shape: 112 112 64 1
+}
+layer {
+name: conv2_1
+type: conv
+w_path: conv2_1_w.dat
+b_path: conv2_1_b.dat
+w_shape: 3 3 64 128
+b_shape: 128 1 1 1
+in_shape: 112 112 64 1
+out_shape: 112 112 128 1
+}
+layer {
+name: conv2_2
+type: conv
+w_path: conv2_2_w.dat
+b_path: conv2_2_b.dat
+w_shape: 3 3 128 128
+b_shape: 128 1 1 1
+in_shape: 112 112 128 1
+out_shape: 112 112 128 1
+}
+layer {
+name: mpool2
+type: pool
+w_path:
+b_path:
+w_shape: 2 2 1 1
+b_shape: 2 2 1 1
+in_shape: 112 112 128 1
+out_shape: 56 56 128 1
+}
+layer {
+name: conv3_1
+type: conv
+w_path: conv3_1_w.dat
+b_path: conv3_1_b.dat
+w_shape: 3 3 128 256
+b_shape: 256 1 1 1
+in_shape: 56 56 128 1
+out_shape: 56 56 256 1
+}
+layer {
+name: conv3_2
+type: conv
+w_path: conv3_2_w.dat
+b_path: conv3_2_b.dat
+w_shape: 3 3 256 256
+b_shape: 256 1 1 1
+in_shape: 56 56 256 1
+out_shape: 56 56 256 1
+}
+layer {
+name: conv3_3
+type: conv
+w_path: conv3_3_w.dat
+b_path: conv3_3_b.dat
+w_shape: 3 3 256 256
+b_shape: 256 1 1 1
+in_shape: 56 56 256 1
+out_shape: 56 56 256 1
+}
+layer {
+name: mpool3
+type: pool
+w_path:
+b_path:
+w_shape: 2 2 1 1
+b_shape: 2 2 1 1
+in_shape: 56 56 256 1
+out_shape: 28 28 256 1
+}
+layer {
+name: conv4_1
+type: conv
+w_path: conv4_1_w.dat
+b_path: conv4_1_b.dat
+w_shape: 3 3 256 512
+b_shape: 512 1 1 1
+in_shape: 28 28 256 1
+out_shape: 28 28 512 1
+}
+layer {
+name: conv4_2
+type: conv
+w_path: conv4_2_w.dat
+b_path: conv4_2_b.dat
+w_shape: 3 3 512 512
+b_shape: 512 1 1 1
+in_shape: 28 28 512 1
+out_shape: 28 28 512 1
+}
+layer {
+name: conv4_3
+type: conv
+w_path: conv4_3_w.dat
+b_path: conv4_3_b.dat
+w_shape: 3 3 512 512
+b_shape: 512 1 1 1
+in_shape: 28 28 512 1
+out_shape: 28 28 512 1
+}
+layer {
+name: mpool4
+type: pool
+w_path:
+b_path:
+w_shape: 2 2 1 1
+b_shape: 2 2 1 1
+in_shape: 28 28 512 1
+out_shape: 14 14 512 1
+}
+layer {
+name: conv5_1
+type: conv
+w_path: conv5_1_w.dat
+b_path: conv5_1_b.dat
+w_shape: 3 3 512 512
+b_shape: 512 1 1 1
+in_shape: 14 14 512 1
+out_shape: 14 14 512 1
+}
+layer {
+name: conv5_2
+type: conv
+w_path: conv5_2_w.dat
+b_path: conv5_2_b.dat
+w_shape: 3 3 512 512
+b_shape: 512 1 1 1
+in_shape: 14 14 512 1
+out_shape: 14 14 512 1
+}
+layer {
+name: conv5_3
+type: conv
+w_path: conv5_3_w.dat
+b_path: conv5_3_b.dat
+w_shape: 3 3 512 512
+b_shape: 512 1 1 1
+in_shape: 14 14 512 1
+out_shape: 14 14 512 1
+}
+layer {
+name: mpool5
+type: pool
+w_path:
+b_path:
+w_shape: 2 2 1 1
+b_shape: 2 2 1 1
+in_shape: 14 14 512 1
+out_shape: 7 7 512 1
+}
+layer {
+name: fc6
+type: fc
+w_path: fc6_w.dat
+b_path: fc6_b.dat
+w_shape: 7 7 512 4096
+b_shape: 4096 1 1 1
+in_shape: 7 7 512 1
+out_shape: 1 1 4096 1
+}
+layer {
+name: fc7
+type: fc
+w_path: VGG_FINETUNE_fc7_weight_0.dat
+b_path: VGG_FINETUNE_fc7_bias_0.dat
+w_shape: 1 1 4096 4096
+b_shape: 4096 1 1 1
+in_shape: 1 1 4096 1
+out_shape: 1 1 4096 1
+}
+layer {
+name: fc8
+type: fc_norelu
+w_path: X_network_fc1_W_0.dat
+b_path: X_network_fc1_b_0.dat
+w_shape: 1 1 4096 1024
+b_shape: 1024 1 1 1
+in_shape: 1 1 4096 1
+out_shape: 1 1 1024 1
+}
+layer {
+name: normalize
+type: normalize
+w_path: 
+b_path: 
+w_shape: 1 1 1024 1
+b_shape: 1 1 1024 1
+in_shape: 1 1 1024 1
+out_shape: 1 1 1024 1
+}
